@@ -103,18 +103,18 @@ public abstract class AbstractBaseService<D extends IBaseDAO, T extends BaseDoma
     }
 
     @Override
-    public BizData4Page queryForPage(Map<String, Object> condition, Integer pageNo, Integer pageSize) {
-        return paging(condition, null, null, pageNo, pageSize);
+    public BizData4Page paging(Map<String, Object> condition, Integer pageNo, Integer pageSize) {
+        return queryForPage(condition, null, null, pageNo, pageSize);
     }
 
     @Override
-    public BizData4Page queryForPage(Map<String, Object> condition, String orderBy, String sortBy, Integer pageNo, Integer pageSize) {
-        return paging(condition, sortBy, orderBy, pageNo, pageSize);
+    public BizData4Page paging(Map<String, Object> condition, String orderBy, String sortBy, Integer pageNo, Integer pageSize) {
+        return queryForPage(condition, sortBy, orderBy, pageNo, pageSize);
     }
 
-    private BizData4Page paging(Map<String, Object> condition, String orderBy, String sortBy, Integer pageNo, Integer pageSize){
+    private BizData4Page queryForPage(Map<String, Object> condition, String orderBy, String sortBy, Integer pageNo, Integer pageSize){
         Integer count = getDao().count(condition);
-        List list = getDao().queryForPage(condition, orderBy, sortBy, (pageNo - 1) * pageSize, pageSize);
+        List list = getDao().paging(condition, orderBy, sortBy, (pageNo - 1) * pageSize, pageSize);
         return BizData4Page.page(list, count, pageNo, pageSize);
     }
 }

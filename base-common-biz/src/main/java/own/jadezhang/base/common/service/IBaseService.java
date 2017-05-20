@@ -47,8 +47,8 @@ public interface IBaseService<D extends IBaseDAO, T extends BaseDomain> {
 
     Integer count(Map<String, Object> condition);
 
-    BizData4Page queryForPage(Map<String, Object> condition, Integer pageNo, Integer pageSize);
+    BizData4Page paging(Map<String, Object> condition, Integer pageNo, Integer pageSize);
 
-    BizData4Page queryForPage(Map<String, Object> condition, String orderBy, String sortBy, Integer pageNo, Integer pageSize);
+    BizData4Page paging(Map<String, Object> condition, String orderBy, String sortBy, Integer pageNo, Integer pageSize);
 }
 

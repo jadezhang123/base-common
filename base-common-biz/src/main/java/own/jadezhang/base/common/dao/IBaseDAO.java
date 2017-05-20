@@ -49,7 +49,7 @@ public interface IBaseDAO<T extends BaseDomain> {
 
     Integer count(@Param("condition") Map<String, Object> condition);
 
-    List<T> queryForPage(@Param("condition") Map<String, Object> condition, @Param("orderBy") String orderBy, @Param("sortBy") String sortBy,
+    List<T> paging(@Param("condition") Map<String, Object> condition, @Param("orderBy") String orderBy, @Param("sortBy") String sortBy,
                          @Param("offset") Integer offset, @Param("rows") Integer rows);
 
     List<T> like(@Param("condition") Map<String, Object> condition, @Param("orderBy") String orderBy, @Param("sortBy") String sortBy);
