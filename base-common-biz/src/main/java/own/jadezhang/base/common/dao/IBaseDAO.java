@@ -19,7 +19,7 @@ public interface IBaseDAO<T extends BaseDomain> {
      */
 	Integer update(T entity);
 
-	Integer updateMap(@Param("update") Map<String, Object> entityMap);
+	Integer updateMap(Map<String, Object> entityMap);
     /**
      * 更新对象,如果属性为null，会进行对应的属性值更新,如果有属性不想更新为null，请参看{@link #update(T)}
      * @param entity
@@ -27,9 +27,11 @@ public interface IBaseDAO<T extends BaseDomain> {
      */
 	Integer updateNull(T entity);
 
-    Integer deleteById(@Param("id") Object id);
+    Integer updateByCondition(@Param("update")Map<String, Object> update, @Param("condition")Map<String, Object> condition);
 
-    Integer deleteByIds(@Param("ids") List ids);
+    Integer deleteById(Object id);
+
+    Integer deleteByIds(List ids);
 
     Integer deleteByProperty(@Param("property") String property, @Param("value") Object value);
 
@@ -47,7 +49,7 @@ public interface IBaseDAO<T extends BaseDomain> {
 
     List<T> queryList(@Param("condition") Map<String, Object> condition, @Param("orderBy") String orderBy, @Param("sortBy") String sortBy);
 
-    Integer count(@Param("condition") Map<String, Object> condition);
+    Integer count(Map<String, Object> condition);
 
     List<T> paging(@Param("condition") Map<String, Object> condition, @Param("orderBy") String orderBy, @Param("sortBy") String sortBy,
                          @Param("offset") Integer offset, @Param("rows") Integer rows);

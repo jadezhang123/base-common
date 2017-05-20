@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public abstract class AbstractBaseService<D extends IBaseDAO, T extends BaseDomain> implements IBaseService<D, T> {
-	@Override
+    @Override
     public Integer add(T entity) {
         return getDao().insert(entity);
     }
@@ -35,6 +35,11 @@ public abstract class AbstractBaseService<D extends IBaseDAO, T extends BaseDoma
     @Override
     public Integer updateMap(Map<String, Object> entityMap) {
         return getDao().updateMap(entityMap);
+    }
+
+    @Override
+    public Integer updateByCondition(Map<String, Object> update, Map<String, Object> condition) {
+        return getDao().updateByCondition(update, condition);
     }
 
     @Override
@@ -112,7 +117,7 @@ public abstract class AbstractBaseService<D extends IBaseDAO, T extends BaseDoma
         return queryForPage(condition, sortBy, orderBy, pageNo, pageSize);
     }
 
-    private BizData4Page queryForPage(Map<String, Object> condition, String orderBy, String sortBy, Integer pageNo, Integer pageSize){
+    private BizData4Page queryForPage(Map<String, Object> condition, String orderBy, String sortBy, Integer pageNo, Integer pageSize) {
         Integer count = getDao().count(condition);
         List list = getDao().paging(condition, orderBy, sortBy, (pageNo - 1) * pageSize, pageSize);
         return BizData4Page.page(list, count, pageNo, pageSize);
