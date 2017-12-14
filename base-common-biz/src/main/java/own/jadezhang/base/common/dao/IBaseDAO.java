@@ -13,7 +13,7 @@ public interface IBaseDAO<T extends BaseDomain> {
 	Integer batchInsert(List<T> entities);
     
     /**
-     * 更新对象,如果属性为null，则不会进行对应的属性值更新,如果有属性要更新为null，请参看{@link #updateNull(T)}
+     * 更新对象,如果属性为null，则不会进行对应的属性值更新
      * @param entity
      * @return
      */
@@ -21,7 +21,7 @@ public interface IBaseDAO<T extends BaseDomain> {
 
 	Integer updateMap(Map<String, Object> entityMap);
     /**
-     * 更新对象,如果属性为null，会进行对应的属性值更新,如果有属性不想更新为null，请参看{@link #update(T)}
+     * 更新对象,如果属性为null，会进行对应的属性值更新
      * @param entity
      * @return
      */
