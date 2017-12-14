@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>own.jadezhang.base</groupId>
     <artifactId>base-common-parent</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.3</version>
     <modules>
         <module>base-common-domain</module>
         <module>base-common-biz</module>
